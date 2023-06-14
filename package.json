@@ -7,7 +7,7 @@
   "license": "MIT",
   "main": "index.tsx",
   "dependencies": {
-    "appwrite": "^10.1.0",
+    "appwrite": "^11.0.0",
     "react": "^18.2.0"
   },
   "devDependencies": {
