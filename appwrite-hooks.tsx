@@ -57,14 +57,14 @@ export function useUser(
     appwriteClient: Client,
     accountAppwriteClient: Account
 ) {
-    const [ account, setAccount ] = useState<Models.Account<Models.Preferences> | null>(null)
+    const [ account, setAccount ] = useState<Models.User<Models.Preferences> | null>(null)
     const [ loaded, setLoaded ] = useState<boolean>(false)
     const [ error, setError ] = useState<AppwriteException | null>(null)
     let unsubscribe: () => void = () => {}
 
     const syncUser = () => {
         accountAppwriteClient.get()
-        .then((account: Models.Account<Models.Preferences>) => {
+        .then((account: Models.User<Models.Preferences>) => {
             setAccount(account)
             setLoaded(true)
         })

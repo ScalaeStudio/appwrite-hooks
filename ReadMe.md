@@ -24,8 +24,8 @@ client
     .setProject('your-project')
 
 function YourComponent() {
-    const [account, loaded, error] = useUser(appwriteClient, appwriteAccount)
-    const [documents, loaded, error] = useCollection(
+    const { account, loaded, error } = useUser(appwriteClient, appwriteAccount)
+    const { documents, loaded, error } = useCollection(
         appwriteClient,
         appwriteDatabase,
         "database-id",
