@@ -1,3 +1,3 @@
-import { useCollection, useUser } from "./appwrite-hooks";
+import { useCollection, useUser, useDocument } from "./appwrite-hooks";
 
-export { useCollection, useUser }
+export { useCollection, useUser, useDocument }

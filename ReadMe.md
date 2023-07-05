@@ -31,6 +31,13 @@ function YourComponent() {
         "database-id",
         "collection-id",
     )
+    const { document, loaded, error } = useDocument(
+        appwriteClient,
+        appwriteDatabase,
+        "database-id",
+        "collection-id",
+        "document-id",
+    );
 
     return (<>...</>)
 }

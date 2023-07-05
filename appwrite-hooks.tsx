@@ -82,3 +82,50 @@ export function useUser(
 
     return { account, loaded, error }
 }
+
+/*
+    Get the given document, live-updated.
+*/
+export function useDocument(
+    appwriteClient: Client,
+    databaseAppwriteClient: Databases,
+    databaseId: string,
+    collectionId: string,
+    documentId: string,
+) {
+
+    const [ document, setDocument ] = useState<Models.Document | null>(null)
+    const [ loaded, setLoaded ] = useState<boolean>(false)
+    const [ error, setError ] = useState<AppwriteException | null>(null)
+
+    /*
+        Fetch the collection.
+    */
+    const syncDocument = () => {
+        databaseAppwriteClient.getDocument(
+            databaseId,
+            collectionId,
+            documentId,
+        )
+        .then((document: Models.Document) => {
+            setDocument(document)
+            setLoaded(true)
+        })
+        .catch(setError)
+    }
+
+    useEffect(() => {
+        syncDocument()
+        // Subscribe to live changes
+        const unsubscribe = appwriteClient.subscribe(
+            `databases.${databaseId}.collections.${collectionId}.documents.${documentId}.update`,
+            () => syncDocument(),
+        )
+        return () => {
+            unsubscribe()
+        }
+    }, [])
+
+    return { document, loaded, error }
+
+}
