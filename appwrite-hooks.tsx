@@ -1,4 +1,4 @@
-import { Account, AppwriteException, Client, Databases, Models } from "appwrite";
+import { Account, AppwriteException, Client, Databases, Models, RealtimeResponseEvent } from "appwrite";
 import { useEffect, useState } from "react";
 
 /*
@@ -118,8 +118,8 @@ export function useDocument(
         syncDocument()
         // Subscribe to live changes
         const unsubscribe = appwriteClient.subscribe(
-            `databases.${databaseId}.collections.${collectionId}.documents.${documentId}.update`,
-            () => syncDocument(),
+            `databases.${databaseId}.collections.${collectionId}.documents.${documentId}`,
+            (event: RealtimeResponseEvent<Models.Document>) => setDocument(event.payload),
         )
         return () => {
             unsubscribe()
