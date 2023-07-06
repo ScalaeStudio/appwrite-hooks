@@ -115,6 +115,7 @@ export function useDocument(
     }
 
     useEffect(() => {
+        if (!documentId) return () => {};
         syncDocument()
         // Subscribe to live changes
         const unsubscribe = appwriteClient.subscribe(
@@ -124,7 +125,7 @@ export function useDocument(
         return () => {
             unsubscribe()
         }
-    }, [])
+    }, [documentId])
 
     return { document, loaded, error }
 
