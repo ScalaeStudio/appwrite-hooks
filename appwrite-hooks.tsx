@@ -44,7 +44,7 @@ export function useCollection(
         return () => {
             unsubscribe()
         }
-    }, [])
+    }, [queries])
 
     return { documents, loaded, error }
 
