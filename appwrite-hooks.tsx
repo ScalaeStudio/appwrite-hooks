@@ -36,15 +36,30 @@ export function useCollection(
 
     useEffect(() => {
         syncCollection()
+    }, [JSON.stringify(queries)])
+
+    useEffect(() => {
         // Subscribe to live changes
         const unsubscribe = appwriteClient.subscribe(
             `databases.${databaseId}.collections.${collectionId}.documents`,
-            () => syncCollection(),
+            (event) => {
+                if (event.events.indexOf("databases.*.collections.*.documents.*.update") >= 0) {
+                    const updatedDocuments = [...documents.documents];
+                    updatedDocuments.forEach((doc, index) => {
+                        if (doc.$id === (event.payload as Models.Document).$id) {
+                            updatedDocuments[index] = (event.payload as Models.Document);
+                        }
+                    });
+                    setDocuments({total: documents.total, documents: updatedDocuments});
+                } else {
+                    syncCollection()
+                }
+            },
         )
         return () => {
             unsubscribe()
         }
-    }, [JSON.stringify(queries)])
+    }, [documents]);
 
     return { documents, loaded, error }
 
