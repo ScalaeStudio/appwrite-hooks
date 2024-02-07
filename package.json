@@ -1,13 +1,13 @@
 {
   "name": "appwrite-hooks",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "React hooks to get a realtime store of Appwrite collections and user",
   "repository": "https://github.com/ScalaeStudio/appwrite-hooks",
   "author": "tom@scalae.studio",
   "license": "MIT",
   "main": "index.tsx",
   "dependencies": {
-    "appwrite": "^11.0.0",
+    "appwrite": "^13.0.1",
     "react": "^18.2.0"
   },
   "devDependencies": {

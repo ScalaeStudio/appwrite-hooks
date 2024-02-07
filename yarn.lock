@@ -21,10 +21,10 @@
   resolved "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.2.tgz"
   integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
 
-appwrite@^11.0.0:
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/appwrite/-/appwrite-11.0.0.tgz#ab9e9cc7c70e453dee5a6c32a41f362e443fc976"
-  integrity sha512-YqLDwfVexQNFrAom6DxROrSm5dgR0FO128H+TBGTMZFc5ebXRw+IAmUHCZO77AbTqZ3EduTQZl61f0PKmcywtQ==
+appwrite@^13.0.1:
+  version "13.0.1"
+  resolved "https://registry.yarnpkg.com/appwrite/-/appwrite-13.0.1.tgz#74b22a8674a9714ac9c603879b8d4ae8746efde3"
+  integrity sha512-kdOLB5Qbr2beQW72diA/dx8L16LywHcQV1H6oqgGtf64Mo6LsvyIM1hEVxWmFLwAXMaOtsqb7Mcs4+oQHo+WmQ==
   dependencies:
     cross-fetch "3.1.5"
     isomorphic-form-data "2.0.0"
